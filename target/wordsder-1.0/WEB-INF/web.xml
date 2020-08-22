@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>crm</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+<!--
+add/create ;跳转到添加页 或者打开添加操作的模态窗口
+save; 执行添加操作
+edit;跳转到修改页 或者打开修改操作的模态窗口
+update;执行修改操作
+grt;执行查询操作   find/select /queary
+
+-->
+<filter>
+   <filter-name>EncodingFilter</filter-name>
+   <filter-class>com.lsz.crm.web.filter.EncodingFilter</filter-class>
+ </filter>
+ <filter-mapping>
+   <filter-name>EncodingFilter</filter-name>
+   <url-pattern>*.dao</url-pattern>
+ </filter-mapping>
+
+    <filter>
+        <filter-name>LoginFiter</filter-name>
+        <filter-class>com.lsz.crm.web.filter.LoginFiter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFiter</filter-name>
+        <url-pattern>*.dao</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+
+    //监听器
+<listener>
+  <listener-class>com.lsz.crm.web.listener.SysInitListener</listener-class>
+</listener>
+
+<!--市场控制器-->
+  <servlet>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>com.lsz.crm.settings.web.controller.UserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/settings/user/login.dao</url-pattern>
+  </servlet-mapping>
+    <!--市场控制器-->
+    <servlet>
+        <servlet-name>ActivityController</servlet-name>
+        <servlet-class> com.lsz.crm.workbench.web.controller.ActivityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivityController</servlet-name>
+        <url-pattern>/workbench/activity/getUserList.dao</url-pattern>
+        <url-pattern>/workbench/activity/save.dao</url-pattern>
+        <url-pattern>/workbench/activity/pageList.dao</url-pattern>
+        <url-pattern>/workbench/activity/delete.dao</url-pattern>
+        <url-pattern>/workbench/activity/getUserListActivity.dao</url-pattern>
+        <url-pattern>/workbench/activity/update.dao</url-pattern>
+        <url-pattern>/workbench/activity/detail.dao</url-pattern>
+        <url-pattern>/workbench/activity/getRemarkListByAid.dao</url-pattern>
+        <url-pattern>/workbench/activity/deleteRemark.dao</url-pattern>
+        <url-pattern>/workbench/activity/saveRemark.dao</url-pattern>
+        <url-pattern>/workbench/activity/updateRemark.dao</url-pattern>
+    </servlet-mapping>
+
+    <!--线索控制器-->
+    <servlet>
+        <servlet-name>ClueController</servlet-name>
+        <servlet-class> com.lsz.crm.workbench.web.controller.ClueController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>ClueController</servlet-name>
+         <url-pattern>/workbench/clue/getUserList.dao</url-pattern>
+        <url-pattern>/workbench/clue/save.dao</url-pattern>
+        <url-pattern>/workbench/clue/detail.dao</url-pattern>
+        <url-pattern>/workbench/clue/getActivityListByClueId.dao</url-pattern>
+        <url-pattern>/workbench/clue/unbund.dao</url-pattern>
+        <url-pattern>/workbench/clue/getActivityListByNameNotById.dao</url-pattern>
+        <url-pattern>/workbench/clue/bund.dao</url-pattern>
+        <url-pattern>/workbench/clue/getActivityListByName.dao</url-pattern>
+        <url-pattern>/workbench/clue/convert.dao</url-pattern>
+
+    </servlet-mapping>
+
+    <!--交易控制器-->
+    <servlet>
+        <servlet-name>TranController</servlet-name>
+        <servlet-class> com.lsz.crm.workbench.web.controller.TranController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TranController</servlet-name>
+        <url-pattern>/workbench/transaction/add.dao</url-pattern>
+        <url-pattern>/workbench/transaction/getCustomerName.dao</url-pattern>
+        <url-pattern>/workbench/transaction/save.dao</url-pattern>
+        <url-pattern>/workbench/transaction/detail.dao</url-pattern>
+        <url-pattern>/workbench/transaction/getHistoryListByTranId.dao</url-pattern>
+        <url-pattern>/workbench/transaction/changeStage.dao</url-pattern>
+        <url-pattern>/workbench/transaction/getCharts.dao</url-pattern>
+
+    </servlet-mapping>
+
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
